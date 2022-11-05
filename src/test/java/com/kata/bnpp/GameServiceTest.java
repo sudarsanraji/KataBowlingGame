@@ -22,4 +22,9 @@ class GameServiceTest {
 		int score = bowlingGame.getScore("12345123451234512345");
 		assertThat(score, is(60));
 	}
+	@Test
+	  public void allStrikes() throws Exception {
+	    int score = bowlingGame.getScore("XXXXXXXXXXXX");
+	    assertThat(score, is(300));
+	  }
 }

@@ -8,9 +8,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ScoreCalculator {
 
 	int calculate(List<FrameDTO> frames) {
-		int totalScore = 0;
-
-		return totalScore;
-	}
-
+	    int totalScore = 0;
+	    for (int index = 0; index < frames.size(); index++) {
+	      totalScore += calculateEachFrame(frames, index);
+	    }
+	    return totalScore;
+	  }
+	private int calculateEachFrame(List<FrameDTO> frames, int index) {
+		  FrameDTO frame = frames.get(index);
+		  if (frame.isSpare()) {
+		      return frame.calculateScore() + frame.getBonus();
+		    }
+	    return frame.calculateScore();
+	  }
 }
