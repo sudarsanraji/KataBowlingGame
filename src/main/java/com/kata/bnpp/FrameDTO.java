@@ -16,7 +16,7 @@ public class FrameDTO {
 	private String second;
 	private boolean bonus;
 	private String upComingRecords;
-	  
+
 	FrameDTO(String first, String second) {
 		this.first = first;
 		this.second = second;
@@ -46,31 +46,45 @@ public class FrameDTO {
 	private int getSecondScore() {
 		return EMPTY.equals(second) || LINE.equals(second) ? 0 : parseInt(second);
 	}
-	void setBonus(boolean bonus) {
-	    this.bonus = bonus;
-	  }
 
-	  boolean isBonus() {
-	    return bonus;
-	  }
-	  
-	  int getBonus() {
-		    String[] bonuses = upComingRecords.split(EMPTY);
-		    int totalBonus = 0;
-		    for (String bonus : bonuses) {
-		      switch (bonus) {
-		        case "X":
-		          totalBonus += 10;
-		          break;
-		        case "/":
-		          return 10;
-		        case "-":
-		          totalBonus += 0;
-		          break;
-		        default:
-		          totalBonus += parseInt(bonus);
-		      }
-		    }
-		    return totalBonus;
-		  }
+	void setBonus(boolean bonus) {
+		this.bonus = bonus;
+	}
+
+	boolean isBonus() {
+		return bonus;
+	}
+
+	int getBonus() {
+		String[] bonuses = upComingRecords.split(EMPTY);
+		int totalBonus = 0;
+		for (String bonus : bonuses) {
+			switch (bonus) {
+			case "X":
+				totalBonus += 10;
+				break;
+			case "/":
+				return 10;
+			case "-":
+				totalBonus += 0;
+				break;
+			default:
+				totalBonus += parseInt(bonus);
+			}
+		}
+		return totalBonus;
+	}
+
+	void setUpComingRecords(String upComingRecords) {
+		this.upComingRecords = upComingRecords;
+	}
+
+	public void setFirst(String first) {
+		this.first = first;
+	}
+
+	public void setSecond(String second) {
+		this.second = second;
+	}
+
 }
